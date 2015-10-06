@@ -2,6 +2,12 @@ This software implements the MATLAB function to crop patches of an image and res
 a wrapper on top of NVIDIA Performance Primitives (https://developer.nvidia.com/NPP), function nppiResizeSqrPixel_32f_P3R
 The NPP library is included in the standard CUDA package.
 
+If you are using this code, please, consider citing the following paper:
+Tuan-Hung Vu, Anton Osokin, Ivan Laptev. Context-aware CNNs for person head detection.
+In proceedings of International Conference on Computer Vision (ICCV), 2015.
+
+The full detection code and our data can be found on the project page: http://www.di.ens.fr/willow/research/headdetection
+
 Anton Osokin, (firstname.lastname@gmail.com)
 March, 2015
 https://github.com/aosokin/cropRectanglesMex
