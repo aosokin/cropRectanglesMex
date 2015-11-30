@@ -1,10 +1,10 @@
 function build_cropRectanglesMex( cudaRoot )
-%build_cropRectanglesMex builds package cropResizeMex
+%build_cropRectanglesMex builds package cropRectanglesMex
 %
 % INPUT:
 %   cudaRoot - path to the CUDA installation
 
-% Anton Osokin, firstname.lastname@gmail.com, March 2015
+% Anton Osokin, firstname.lastname@gmail.com, May 2015
 
 if ~exist('cudaRoot', 'var')
     cudaRoot = '/usr/cuda-6.5' ;

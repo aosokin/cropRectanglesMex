@@ -17,8 +17,10 @@
 % Outputs:
 % crops - the cropped and resized patches, gpuArray, single[ outputSize(1), outputSize(2), numChannels = 3, numBoundingBoxes ]
 %
-% The function can be compiled using build_cropResizeMex.m. 
-% example_cropRectanglesMex.m provides the example of usage
+% The function can be compiled using build_cropRectanglesMex.m. 
+% example_cropRectanglesMex.m provides the example of usage.
+%
+% If you want crop tetragons and not rectangles see cropTetragonsMex.m from https://github.com/aosokin/cropTetragonsMex
 
-% Anton Osokin, firstname.lastname@gmail.com, March 2015
+% Anton Osokin, firstname.lastname@gmail.com, May 2015
 

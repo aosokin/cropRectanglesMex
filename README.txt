@@ -1,4 +1,4 @@
-This software implements the MATLAB function to crop patches of an image and resize them to the standard size (on a GPU):
+This software implements MATLAB function to crop patches of an image and resize them to the standard size (on a GPU):
 a wrapper on top of NVIDIA Performance Primitives (https://developer.nvidia.com/NPP), function nppiResizeSqrPixel_32f_P3R
 The NPP library is included in the standard CUDA package.
 
@@ -9,7 +9,7 @@ In proceedings of International Conference on Computer Vision (ICCV), 2015.
 The full detection code and our data can be found on the project page: http://www.di.ens.fr/willow/research/headdetection
 
 Anton Osokin, (firstname.lastname@gmail.com)
-March, 2015
+May, 2015
 https://github.com/aosokin/cropRectanglesMex
 
 PACKAGE
@@ -37,3 +37,7 @@ The code was tested under
 
 This code was written to be used together with MatConvNet (http://www.vlfeat.org/matconvnet/) and in theory should work if MatConvNet works.
 If you face compilation problems the MatConvNet compilation script (vl_compilenn.m) might be of some help.
+
+OTHER PACKAGES
+-----------------------------
+If you want crop tetragons and not rectangles see cropTetragonsMex.m from https://github.com/aosokin/cropTetragonsMex 
