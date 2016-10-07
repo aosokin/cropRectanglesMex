@@ -6,7 +6,7 @@ height = size(initialImage, 1);
 
 cropPositions = [ 1, 1, height, width; ... % full image
                   1, 1, height / 2, width / 3; ... % sub patch
-                  -height / 2, -width / 2, height / 2, width / 3 ]; ... % sub patch not inside the image
+                  -height / 2, -width / 2, height / 2, width / 3 ]; % sub patch not inside the image
 crops = cropRectanglesMex( initialImage, cropPositions, [height, width] );
 
 figure(1), imshow( initialImage );

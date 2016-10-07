@@ -31,8 +31,8 @@ void mexFunction(int nlhs, mxArray *plhs[],
 	mxArray **cropsOutPtr = (nlhs >= 1) ? &plhs[0] : NULL; // croped and resized patches
 	
 	// Get the image
+	MATLAB_ASSERT(!mxIsGPUArray(imInPtr) && mxGetClassID(imInPtr) == mxSINGLE_CLASS, "cropRectanglesMex: the image should be of type SINGLE in RAM (not GPU)");
 	MATLAB_ASSERT(mxGetNumberOfDimensions(imInPtr) == 3, "cropRectanglesMex: the image is not 3-dimensional");
-	MATLAB_ASSERT(mxGetClassID(imInPtr) == mxSINGLE_CLASS, "cropRectanglesMex: the image should be of type SINGLE");
 	MATLAB_ASSERT(mxGetPi(imInPtr) == NULL, "cropRectanglesMex: image should not be complex");
 
     const mwSize* dimensions = mxGetDimensions(imInPtr);
@@ -44,8 +44,8 @@ void mexFunction(int nlhs, mxArray *plhs[],
 	float* imageData = (float*) mxGetData(imInPtr);
 
 	// get bounding boxes
+	MATLAB_ASSERT(!mxIsGPUArray(bbInPtr) && mxGetClassID(bbInPtr) == mxDOUBLE_CLASS, "cropRectanglesMex: <boundingBoxes> input is not of type double in RAM (not GPU)");
 	MATLAB_ASSERT(mxGetNumberOfDimensions(bbInPtr) == 2, "cropRectanglesMex: <boundingBoxes> input is not 2-dimensional");
-	MATLAB_ASSERT(mxGetClassID(bbInPtr) == mxDOUBLE_CLASS, "cropRectanglesMex: <boundingBoxes> input is not of type double");
 	MATLAB_ASSERT(mxGetPi(bbInPtr) == NULL, "cropRectanglesMex: <boundingBoxes> input should not be complex");
 	MATLAB_ASSERT(mxGetN(bbInPtr) == 4, "cropRectanglesMex: <boundingBoxes> input should be of size #boundingBoxes x 4");
 	
@@ -53,8 +53,8 @@ void mexFunction(int nlhs, mxArray *plhs[],
 	double* bbData = (double*) mxGetData(bbInPtr); // y1, x1, y2, x2
 
 	// get output size
+	MATLAB_ASSERT(!mxIsGPUArray(szInPtr) && mxGetClassID(szInPtr) == mxDOUBLE_CLASS, "cropRectanglesMex: <outputSize> input is not of type double in RAM (not GPU)");
 	MATLAB_ASSERT(mxGetNumberOfElements(szInPtr) == 2, "cropRectanglesMex: <outputSize> input should contain 2 numbers");
-	MATLAB_ASSERT(mxGetClassID(szInPtr) == mxDOUBLE_CLASS, "cropRectanglesMex: <outputSize> input is not of type double");
 	MATLAB_ASSERT(mxGetPi(szInPtr) == NULL, "cropRectanglesMex: <outputSize> input should not be complex");
 	
 	double* outputSizeData = (double*) mxGetData(szInPtr);

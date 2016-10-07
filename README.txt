@@ -33,7 +33,7 @@ USING THE CODE
 2) Run example_cropRectanglesMex.m to check if the code works
 
 The code was tested under 
-- ubuntu-12.04-x64 using MATLAB R2014b, gcc-4.6.3, cuda-6.5
+- ubuntu-12.04-x64 using MATLAB R2014b, gcc-4.6.3, cuda-6.5 and coda 7.0
 
 This code was written to be used together with MatConvNet (http://www.vlfeat.org/matconvnet/) and in theory should work if MatConvNet works.
 If you face compilation problems the MatConvNet compilation script (vl_compilenn.m) might be of some help.
