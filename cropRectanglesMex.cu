@@ -3,9 +3,6 @@
 #include "gpu/mxGPUArray.h"
 
 #include <npp.h>
-#include <cuda_runtime.h>
-#include <Exceptions.h>
-#include <helper_cuda.h>
 
 #include <math.h> 
 
@@ -140,7 +137,7 @@ void mexFunction(int nlhs, mxArray *plhs[],
         // When NPP_CHECK_NPP catches an error it throws an exception
         // If the exception is not caught, we can get a memory leak on a GPU
         try{
-            NPP_CHECK_NPP( nppiResizeSqrPixel_32f_P3R (
+             NppStatus exitCode = nppiResizeSqrPixel_32f_P3R (
         		pSrc,  // const Npp32f *pSrc, 
             	nppiImageSize, // nppiSize oSrcSize, 
                 imageStep, // int nSrcStep, 
@@ -150,7 +147,11 @@ void mexFunction(int nlhs, mxArray *plhs[],
                 targetRect, // NppiRect oDstROI, 
                 nXFactor, nYFactor, nXShift, nYShift, 
                 NPPI_INTER_CUBIC //int eInterpolation
-                ) );
+                );
+            if (exitCode != NPP_SUCCESS) {
+                mexPrintf("nppiResizeSqrPixel_32f_P3R returns exit code %d, see http://cseweb.ucsd.edu/classes/wi15/cse262-a/static/cuda-5.5-doc/pdf/NPP_Library.pdf for the description of exit code.\n", exitCode);
+                MATLAB_ASSERT(exitCode == NPP_SUCCESS, "cropRectanglesMex: nppiResizeSqrPixel_32f_P3R returns bad exit code");
+            }
         } catch (...) {
             // free GPU memory
             mxGPUDestroyGPUArray(outputData);
